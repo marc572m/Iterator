@@ -1,18 +1,23 @@
 package FilEksempler;
 
 public class CollectionofNames implements Container {
-    public String name[]={"Ashwani Rajput", "Soono Jaiswal","Rishi Kumar","Rahul Mehta","Hemant Mishra"};
+    public Person tabel[];
+
+    public CollectionofNames(Person[] tabel) {
+        this.tabel = tabel;
+    }
 
     @Override
     public Iterator getIterator() {
-        return new CollectionofNamesIterate() ;
+        return new CollectionofNamesIterate();
+
     }
 
     private class CollectionofNamesIterate implements Iterator{
         int i;
         @Override
         public boolean hasNext() {
-            if (i<name.length){
+            if (i< tabel.length){
                 return true;
             }
             return false;
@@ -20,10 +25,12 @@ public class CollectionofNames implements Container {
         @Override
         public Object next() {
             if(this.hasNext()){
-                return name[i++];
+                return tabel[i++];
             }
             return null;
         }
     }
+
+
 }
 
